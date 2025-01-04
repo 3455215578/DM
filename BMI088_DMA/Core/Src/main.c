@@ -46,6 +46,10 @@
 
 /* USER CODE BEGIN PV */
 
+float gyro[3];
+float accel[3];
+float* temperate;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -94,6 +98,11 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
+	while(BMI088_init() != 0)  // 函数返回0代表无错误
+	{
+
+
+	}
 
   /* USER CODE END 2 */
 
@@ -104,6 +113,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	BMI088_read(gyro, accel, temperate);
   }
   /* USER CODE END 3 */
 }
