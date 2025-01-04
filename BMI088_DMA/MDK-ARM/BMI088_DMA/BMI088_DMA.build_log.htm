@@ -27,25 +27,11 @@ Project File Date:  01/05/2025
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 5 (build 528)', folder: 'D:\stm32\ARM\ARMCC\Bin'
 Build target 'BMI088_DMA'
-compiling BMI088Middleware.c...
-..\Device\BMI088\BMI088Middleware.c(98): error:  #20: identifier "ACC_CS_GPIO_Port" is undefined
-      HAL_GPIO_WritePin(ACC_CS_GPIO_Port, ACC_CS_Pin, GPIO_PIN_RESET);
-..\Device\BMI088\BMI088Middleware.c(98): error:  #20: identifier "ACC_CS_Pin" is undefined
-      HAL_GPIO_WritePin(ACC_CS_GPIO_Port, ACC_CS_Pin, GPIO_PIN_RESET);
-..\Device\BMI088\BMI088Middleware.c(110): error:  #20: identifier "ACC_CS_GPIO_Port" is undefined
-      HAL_GPIO_WritePin(ACC_CS_GPIO_Port, ACC_CS_Pin, GPIO_PIN_SET);
-..\Device\BMI088\BMI088Middleware.c(110): error:  #20: identifier "ACC_CS_Pin" is undefined
-      HAL_GPIO_WritePin(ACC_CS_GPIO_Port, ACC_CS_Pin, GPIO_PIN_SET);
-..\Device\BMI088\BMI088Middleware.c(122): error:  #20: identifier "GYRO_CS_GPIO_Port" is undefined
-      HAL_GPIO_WritePin(GYRO_CS_GPIO_Port, GYRO_CS_Pin, GPIO_PIN_RESET);
-..\Device\BMI088\BMI088Middleware.c(122): error:  #20: identifier "GYRO_CS_Pin" is undefined
-      HAL_GPIO_WritePin(GYRO_CS_GPIO_Port, GYRO_CS_Pin, GPIO_PIN_RESET);
-..\Device\BMI088\BMI088Middleware.c(134): error:  #20: identifier "GYRO_CS_GPIO_Port" is undefined
-      HAL_GPIO_WritePin(GYRO_CS_GPIO_Port, GYRO_CS_Pin, GPIO_PIN_SET);
-..\Device\BMI088\BMI088Middleware.c(134): error:  #20: identifier "GYRO_CS_Pin" is undefined
-      HAL_GPIO_WritePin(GYRO_CS_GPIO_Port, GYRO_CS_Pin, GPIO_PIN_SET);
-..\Device\BMI088\BMI088Middleware.c: 0 warnings, 8 errors
-"BMI088_DMA\BMI088_DMA.axf" - 8 Error(s), 0 Warning(s).
+compiling main.c...
+linking...
+Program Size: Code=10234 RO-data=782 RW-data=68 ZI-data=1796  
+FromELF: creating hex file...
+"BMI088_DMA\BMI088_DMA.axf" - 0 Error(s), 0 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -68,8 +54,7 @@ Package Vendor: Keil
 <h2>Collection of Component Files used:</h2>
 
    * Component: ARM::CMSIS:CORE:5.0.1
-Target not created.
-Build Time Elapsed:  00:00:03
+Build Time Elapsed:  00:00:04
 </pre>
 </body>
 </html>

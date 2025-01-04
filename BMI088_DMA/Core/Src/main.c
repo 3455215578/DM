@@ -25,6 +25,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "BMI088driver.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -98,11 +100,7 @@ int main(void)
   MX_GPIO_Init();
   MX_SPI2_Init();
   /* USER CODE BEGIN 2 */
-	while(BMI088_init() != 0)  // 函数返回0代表无错误
-	{
-
-
-	}
+  BMI088_init();  // 函数返回0代表无错误
 
   /* USER CODE END 2 */
 

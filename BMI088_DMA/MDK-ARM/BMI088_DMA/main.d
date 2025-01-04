@@ -37,4 +37,4 @@ bmi088_dma\main.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_spi_ex.h
 bmi088_dma\main.o: ../Core/Inc/memorymap.h
 bmi088_dma\main.o: ../Core/Inc/spi.h
 bmi088_dma\main.o: ../Core/Inc/gpio.h
-bmi088_dma\main.o: ..\Device\BMI088\BMI088driver.h
+bmi088_dma\main.o: ../Device/BMI088/BMI088driver.h
