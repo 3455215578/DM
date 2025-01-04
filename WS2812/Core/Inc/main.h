@@ -7,7 +7,7 @@
   ******************************************************************************
   * @attention
   *
-  * Copyright (c) 2024 STMicroelectronics.
+  * Copyright (c) 2025 STMicroelectronics.
   * All rights reserved.
   *
   * This software is licensed under terms that can be found in the LICENSE file
@@ -57,12 +57,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define POWER_OUT2_Pin GPIO_PIN_13
-#define POWER_OUT2_GPIO_Port GPIOC
-#define POWER_OUT1_Pin GPIO_PIN_14
-#define POWER_OUT1_GPIO_Port GPIOC
-#define POWER_OUT5V_Pin GPIO_PIN_15
-#define POWER_OUT5V_GPIO_Port GPIOC
 
 /* USER CODE BEGIN Private defines */
 
