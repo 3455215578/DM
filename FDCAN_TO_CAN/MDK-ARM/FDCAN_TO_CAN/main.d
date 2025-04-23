@@ -37,3 +37,4 @@ fdcan_to_can\main.o: ../Core/Inc/fdcan.h
 fdcan_to_can\main.o: ../Core/Inc/memorymap.h
 fdcan_to_can\main.o: ../Core/Inc/gpio.h
 fdcan_to_can\main.o: ../User/Bsp/Inc/bsp_can.h
+fdcan_to_can\main.o: ../User/Device/Inc/dm_imu.h

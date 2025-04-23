@@ -19,6 +19,6 @@ typedef struct {
 	
 } FDCAN_RxFrame_TypeDef;
 
-void FDCAN1_FilterInit(void);
+void FDCAN_FilterInit(void);
 
 #endif

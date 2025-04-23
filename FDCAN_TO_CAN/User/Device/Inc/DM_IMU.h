@@ -2,6 +2,7 @@
 #define __DM_IMU_H
 
 #include "stm32h7xx_hal.h"
+#include "bsp_can.h"
 
 
 #define ACCEL_CAN_MAX   (58.8f)
@@ -35,5 +36,6 @@ typedef struct
 }imu_t;
 
 void IMU_UpdateData(uint8_t* pData);
+void IMU_RequestData(FDCAN_TxFrame_TypeDef *TxFrame, uint16_t can_id,uint8_t reg);
 
 #endif

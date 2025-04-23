@@ -1,5 +1,4 @@
 #include "dm_imu.h"
-#include "bsp_can.h"
 
 imu_t imu;
 extern FDCAN_TxFrame_TypeDef ImuTxFrame;

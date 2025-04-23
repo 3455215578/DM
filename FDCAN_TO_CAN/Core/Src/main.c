@@ -26,6 +26,7 @@
 /* USER CODE BEGIN Includes */
 
 #include "bsp_can.h"
+#include "dm_imu.h"
 
 /* USER CODE END Includes */
 
@@ -59,7 +60,7 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+extern FDCAN_TxFrame_TypeDef ImuTxFrame;
 /* USER CODE END 0 */
 
 /**
@@ -94,10 +95,12 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  MX_FDCAN1_Init();
+//  MX_FDCAN1_Init();
+//  MX_FDCAN2_Init();
+  MX_FDCAN3_Init();
   /* USER CODE BEGIN 2 */
 
-  FDCAN1_FilterInit();
+  FDCAN_FilterInit();
 
   /* USER CODE END 2 */
 
@@ -108,6 +111,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+	  IMU_RequestData(&ImuTxFrame, 0x01,0x03);
   }
   /* USER CODE END 3 */
 }
