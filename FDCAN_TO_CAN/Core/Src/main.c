@@ -112,6 +112,7 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 	  IMU_RequestData(&ImuTxFrame, 0x01,0x03);
+	  HAL_Delay(2);
   }
   /* USER CODE END 3 */
 }
