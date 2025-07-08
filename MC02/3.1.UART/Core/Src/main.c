@@ -103,6 +103,7 @@ int main(void) {
     uint8_t data[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
     char str[] = "Hello World!";
 
+    // 开启串口接收中断
     HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer) / sizeof(Data_Buffer[0]));
 
     /* USER CODE END 2 */
@@ -113,15 +114,13 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-
         /** 实验一：单片机通过串口向电脑发送数据 **/
 //        HAL_UART_Transmit(&huart1, data, sizeof(data) / sizeof(data[0]), 0xffff);
 //        HAL_UART_Transmit(&huart1, (uint8_t *) str, strlen(str), 0xffff);
 //        HAL_Delay(500);
 
         /** 实验二：通过串口通信点亮LED **/
-
-        // 定义帧头
+//        HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer) / sizeof(Data_Buffer[0]));
 
     }
     /* USER CODE END 3 */

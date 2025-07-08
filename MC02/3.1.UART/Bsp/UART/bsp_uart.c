@@ -55,7 +55,8 @@ void UART_Data_Check(void) {
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
-    UART_Data_Check();
+    if (huart == &huart1) {
+        HAL_UART_Receive_IT(huart, Data_Buffer, sizeof(Data_Buffer) / sizeof(Data_Buffer[0]));
+    }
 
-    HAL_UART_Receive_IT(huart, Data_Buffer, sizeof(Data_Buffer) / sizeof(Data_Buffer[0]));
 }
