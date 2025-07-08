@@ -1,4 +1,3 @@
-#include <stdint-gcc.h>
 #include "bsp_uart.h"
 
 // 不要include "stm32h7xx_hal_uart.h"
@@ -12,12 +11,13 @@ Check_State receive_state = Init;
 
 uint8_t Data_Buffer[8];
 
-uint8_t Data[4];
+uint8_t Data[4] = {0};
 
 /** 0xAA 0xCC 数据字节1 数据字节2 数据字节3 数据字节4（默认0x00） 0xEE 0xFF **/
 // 数据字节1、2、3分别用于控制红绿蓝灯，0x00灭，0x01亮
 
 void UART_Data_Check(void) {
+
     /** 检测帧头 **/
     if (receive_state == Init) {
         if (Data_Buffer[Head_1] == 0xAA) {
@@ -59,6 +59,7 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
 
         UART_Data_Check();
 
+        HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer));
     }
 
 }

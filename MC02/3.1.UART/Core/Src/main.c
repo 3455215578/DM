@@ -28,6 +28,7 @@
 
 #include <string.h>
 #include "bsp_uart.h"
+#include "WS2812.h"
 
 /* USER CODE END Includes */
 
@@ -62,7 +63,9 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-int a;
+int r = 0;
+int g = 0;
+int b = 0;
 /* USER CODE END 0 */
 
 /**
@@ -103,9 +106,6 @@ int main(void) {
     uint8_t data[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
     char str[] = "Hello World!";
 
-//    a = sizeof(Data_Buffer) / sizeof(Data_Buffer[0]);
-    a = sizeof(Data_Buffer);
-
     // 开启串口接收中断
     HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer));
 
@@ -123,7 +123,24 @@ int main(void) {
 //        HAL_Delay(500);
 
         /** 实验二：通过串口通信点亮LED **/
-//        HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer) / sizeof(Data_Buffer[0]));
+        if (Data[0] == 1) {
+            r = 1;
+            g = 0;
+            b = 0;
+        }
+        if (Data[1] == 1) {
+            r = 0;
+            g = 1;
+            b = 0;
+        }
+        if (Data[2] == 1) {
+            r = 0;
+            g = 0;
+            b = 1;
+        }
+
+        WS2812_Ctrl(r, g, b);
+        HAL_Delay(500);
 
     }
     /* USER CODE END 3 */

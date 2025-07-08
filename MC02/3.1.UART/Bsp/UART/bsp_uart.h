@@ -1,6 +1,9 @@
 #ifndef _BSP_UART_H
 #define _BSP_UART_H
 
+#include <stdint-gcc.h>
+#include <stdbool.h>
+
 /** 帧头帧尾 **/
 typedef enum {
     Head_1 = 0,
@@ -17,5 +20,6 @@ typedef enum {
 } Check_State;
 
 extern uint8_t Data_Buffer[8];
+extern uint8_t Data[4];
 
 #endif
