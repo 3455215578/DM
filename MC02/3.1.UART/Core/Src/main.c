@@ -19,11 +19,15 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "memorymap.h"
+#include "spi.h"
 #include "usart.h"
 #include "gpio.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
+#include <string.h>
+#include "bsp_uart.h"
 
 /* USER CODE END Includes */
 
@@ -93,10 +97,13 @@ int main(void) {
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
     MX_USART1_UART_Init();
+    MX_SPI6_Init();
     /* USER CODE BEGIN 2 */
 
     uint8_t data[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
     char str[] = "Hello World!";
+
+    HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer) / sizeof(Data_Buffer[0]));
 
     /* USER CODE END 2 */
 
@@ -106,12 +113,15 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        
-        /** ÊµÑéÒ»£ºµ¥Æ¬»úÍ¨¹ı´®¿ÚÓëµçÄÔÍ¨ĞÅ **/
-//        HAL_UART_Transmit(&huart1, data, sizeof(data) / sizeof(data[0]), 0xffff);
-        HAL_UART_Transmit(&huart1, (uint8_t *) str, sizeof(str) / sizeof(str[0]), 0xffff);
-        HAL_Delay(500);
 
+        /** å®éªŒä¸€ï¼šå•ç‰‡æœºé€šè¿‡ä¸²å£å‘ç”µè„‘å‘é€æ•°æ® **/
+//        HAL_UART_Transmit(&huart1, data, sizeof(data) / sizeof(data[0]), 0xffff);
+//        HAL_UART_Transmit(&huart1, (uint8_t *) str, strlen(str), 0xffff);
+//        HAL_Delay(500);
+
+        /** å®éªŒäºŒï¼šé€šè¿‡ä¸²å£é€šä¿¡ç‚¹äº®LED **/
+
+        // å®šä¹‰å¸§å¤´
 
     }
     /* USER CODE END 3 */
