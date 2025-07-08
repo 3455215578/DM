@@ -62,7 +62,7 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+int a;
 /* USER CODE END 0 */
 
 /**
@@ -103,8 +103,11 @@ int main(void) {
     uint8_t data[] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07};
     char str[] = "Hello World!";
 
+//    a = sizeof(Data_Buffer) / sizeof(Data_Buffer[0]);
+    a = sizeof(Data_Buffer);
+
     // 开启串口接收中断
-    HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer) / sizeof(Data_Buffer[0]));
+    HAL_UART_Receive_IT(&huart1, Data_Buffer, sizeof(Data_Buffer));
 
     /* USER CODE END 2 */
 
