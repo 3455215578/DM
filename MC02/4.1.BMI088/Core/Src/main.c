@@ -100,7 +100,7 @@ int main(void) {
     /* USER CODE BEGIN 2 */
 
     while (BMI088_init() != BMI088_NO_ERROR);
-    
+
     /* USER CODE END 2 */
 
     /* Infinite loop */
