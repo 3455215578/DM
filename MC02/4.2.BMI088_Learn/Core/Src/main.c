@@ -58,10 +58,9 @@ static void MPU_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-//#define BMI088_ACCEL_3G_SEN 0.0008974358974f    //这个数字我也不知道哪来的
-#define BMI088_ACCEL_3G_SEN 0.00009155f
+#define BMI088_ACCEL_6G_SEN 0.00179443359375f
 
-float BMI088_ACCEL_SEN = BMI088_ACCEL_3G_SEN;
+float BMI088_ACCEL_SEN = BMI088_ACCEL_6G_SEN;
 
 float accelerometer[3];
 
