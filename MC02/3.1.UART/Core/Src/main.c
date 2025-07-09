@@ -123,17 +123,17 @@ int main(void) {
 //        HAL_Delay(500);
 
         /** 实验二：通过串口通信点亮LED **/
-        if (Data[0] == 1) {
+        if (Data[0] == 0x01) {
             r = 1;
             g = 0;
             b = 0;
         }
-        if (Data[1] == 1) {
+        if (Data[1] == 0x01) {
             r = 0;
             g = 1;
             b = 0;
         }
-        if (Data[2] == 1) {
+        if (Data[2] == 0x01) {
             r = 0;
             g = 0;
             b = 1;
