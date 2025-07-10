@@ -48,14 +48,19 @@ target_link_directories(${CMAKE_PROJECT_NAME} PRIVATE
 # Add sources to executable
 target_sources(${CMAKE_PROJECT_NAME} PRIVATE
         # Add user sources here
+        Algorithm/PID/pid.c
         Bsp/CAN/bsp_can.c
+        Bsp/DWT/bsp_dwt.c
         Device/DJI_Motor/DJI_Motor.c
+
 )
 
 # Add include paths
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE
         # Add user defined include paths
+        Algorithm/PID
         Bsp/CAN
+        Bsp/DWT
         Device/DJI_Motor
 )
 

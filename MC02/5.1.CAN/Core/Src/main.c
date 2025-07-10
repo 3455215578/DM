@@ -25,7 +25,9 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "bsp_can.h"
+#include "bsp_dwt.h"
 #include "DJI_Motor.h"
+#include "pid.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,6 +59,14 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+#define MOTOR_SPEED_PID_KP 20.0f
+#define MOTOR_SPEED_PID_KI 0.0f
+#define MOTOR_SPEED_PID_KD 0.0f
+#define MOTOR_SPEED_PID_IOUT_LIMIT 0.0f
+#define MOTOR_SPEED_PID_OUT_LIMIT 2000.0f
+
+PID_t Speed_PID;
 
 /* USER CODE END 0 */
 
@@ -91,7 +101,17 @@ int main(void) {
     MX_FDCAN1_Init();
     /* USER CODE BEGIN 2 */
 
+    DWT_Init(480);
     FDCAN_FilterInit();
+
+    PID_Init(&Speed_PID,
+             MOTOR_SPEED_PID_OUT_LIMIT,
+             MOTOR_SPEED_PID_IOUT_LIMIT,
+             MOTOR_SPEED_PID_KP,
+             MOTOR_SPEED_PID_KI,
+             MOTOR_SPEED_PID_KD);
+
+    dji_motor.offset_ecd = 1778;
 
     /* USER CODE END 2 */
 
@@ -102,10 +122,22 @@ int main(void) {
 
         /* USER CODE BEGIN 3 */
         DJIMotor_Current_Set(&DJIMotor_TxFrame,
-                             700,
+                             0,
                              0,
                              0,
                              0);
+
+        /** 实验一：以一定转速旋转 **/
+//        float target_current = PID_Calculate(&Speed_PID,
+//                                             dji_motor.speed_rpm,
+//                                             200);
+//
+//        DJIMotor_Current_Set(&DJIMotor_TxFrame,
+//                             target_current,
+//                             0,
+//                             0,
+//                             0);
+
 
         HAL_Delay(1);
     }

@@ -1,6 +1,24 @@
 #include "DJI_Motor.h"
 
-DJI_Motor_t motor;
+DJI_Motor_t dji_motor;
+
+/**
+ * @brief 计算DJI电机转的圈数, 电机总编码值的计算, 解决过零点问题
+ * @param[in] motor  电机结构体指针
+ */
+void DJI_Round_Count(DJI_Motor_t *motor) {
+    if (motor->ecd - motor->last_ecd > ECD180) {
+        motor->round_cnt--;
+    } else if (motor->ecd - motor->last_ecd < -ECD180) {
+        motor->round_cnt++;
+    }
+
+    motor->out_round_cnt = motor->round_cnt / 19.20f;
+
+    motor->total_ecd = motor->round_cnt * ECD360 + (motor->ecd - motor->offset_ecd);
+
+
+}
 
 /**
  * @brief DJI电机解码

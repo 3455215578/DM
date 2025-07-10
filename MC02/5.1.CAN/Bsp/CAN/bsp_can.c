@@ -62,6 +62,7 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
     HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &FDCAN1_RxFrame.Header, FDCAN1_RxFrame.Data);
 
     if (FDCAN1_RxFrame.Header.Identifier == 0x201) {
-        DJI_Motor_Update_Data(&motor, FDCAN1_RxFrame.Data);
+        DJI_Motor_Update_Data(&dji_motor, FDCAN1_RxFrame.Data);
+        DJI_Round_Count(&dji_motor);
     }
 }
