@@ -58,7 +58,7 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+int a;
 /* USER CODE END 0 */
 
 /**
@@ -92,7 +92,12 @@ int main(void) {
     MX_DMA_Init();
     MX_UART5_Init();
     /* USER CODE BEGIN 2 */
-    USART_RxDMA_DoubleBuffer_Init(&huart5, SBUS_MultiRx_Buf[0], SBUS_MultiRx_Buf[1], DataLength);
+
+    USART_RxDMA_MultiBuffer_Init(&huart5, (uint32_t *) SBUS_MultiRx_Buf[0], (uint32_t *) SBUS_MultiRx_Buf[1],
+                                 SBUS_RX_BUF_NUM);
+
+
+
     /* USER CODE END 2 */
 
     /* Infinite loop */
