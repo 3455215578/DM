@@ -4,7 +4,6 @@ extern UART_HandleTypeDef huart5;
 extern DMA_HandleTypeDef hdma_uart5_rx;
 
 // 非常重要！！！
-//uint8_t SBUS_MultiRx_Buf[2][SBUS_RX_BUF_NUM];
 __attribute__((section (".AXI_SRAM")))uint8_t SBUS_MultiRx_Buf[2][SBUS_RX_BUF_NUM];
 
 void USART_RxDMA_MultiBuffer_Init(UART_HandleTypeDef *huart, uint32_t *DstAddress, uint32_t *SecondMemAddress,
