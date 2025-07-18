@@ -19,7 +19,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "adc.h"
-#include "dma.h"
 #include "memorymap.h"
 #include "gpio.h"
 
@@ -94,11 +93,9 @@ int main(void) {
 
     /* Initialize all configured peripherals */
     MX_GPIO_Init();
-    MX_DMA_Init();
     MX_ADC1_Init();
     /* USER CODE BEGIN 2 */
     HAL_ADCEx_Calibration_Start(&hadc1, ADC_CALIB_OFFSET, ADC_SINGLE_ENDED);
-    HAL_ADC_Start_DMA(&hadc1, (uint32_t *) adc_val, 2);
     /* USER CODE END 2 */
 
     /* Infinite loop */
@@ -107,8 +104,19 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        vbus = (adc_val[0] * 3.3f / 65535) * 11.0f;
-        HAL_Delay(1);
+        // 开启ADC
+        HAL_ADC_Start(&hadc1);
+
+        // 等待转换完成
+        HAL_ADC_PollForConversion(&hadc1, 10);
+
+        // 关闭ADC
+        HAL_ADC_Stop(&hadc1);
+
+        // 获取ADC值
+        vbus = HAL_ADC_GetValue(&hadc1);
+
+        HAL_Delay(500);
     }
     /* USER CODE END 3 */
 }
