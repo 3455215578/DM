@@ -104,19 +104,19 @@ int main(void) {
         /* USER CODE END WHILE */
 
         /* USER CODE BEGIN 3 */
-        // ����ADC
+        // 开启ADC
         HAL_ADC_Start(&hadc1);
 
-        // �ȴ�ת�����
-        HAL_ADC_PollForConversion(&hadc1, 10);
+//        // 等待转换完成
+//        HAL_ADC_PollForConversion(&hadc1, 10);
+//
+//        // 关闭ADC
+//        HAL_ADC_Stop(&hadc1);
 
-        // �ر�ADC
-        HAL_ADC_Stop(&hadc1);
-
-        // ��ȡADCֵ
+        // 读取转换值
         vbus = HAL_ADC_GetValue(&hadc1);
 
-        HAL_Delay(500);
+        HAL_Delay(10);
     }
     /* USER CODE END 3 */
 }
